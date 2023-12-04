@@ -130,22 +130,25 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 	- potentiellement à termes Test Driven Development
 
 
-- participé à des meetings expliquant le coté technique, fonctionnel et historique sur le fonctionnement du legacy, le legacy sous
+- participé à des meetings expliquant le coté technique, fonctionnel et historique sur le fonctionnement du legacy. Le système legacy (Oracle Exadata/Informatica) fonctionne presque entièrement en tables et certains choix sont historiques/deprecated, il est donc assez difficile d'en retirer les informations sans documentation externe.
 
 #### 2 - Ce que j'ai appris :
 
-- comprendre mieux l'architecture datalake et son histoire, ainsi que le rôle des différentes applications dans écosystème (yarn = orchestrateur, scaling horizontal, hive, etc)
-- comprendre les concepts de base utilisés sur la liquidité : idf_trt_sit, situation, etc
-- comprendre petit à petit le modèle de données
-- utiliser le système de user/schema d'Oracle
+- visualiser le fonctionnement de base du système legacy, comprendre les choix historiques
+- comprendre et utiliser les principes de qualité de code dans l'infra du Fond De Carte
+- comprendre les besoins concurrents dans l'enjambement du legacy au lake 
+- comprendre le système d'exécution des workflows Informatica
 
 #### 3 - Ce que j'ai ressenti (problèmes rencontrés et réussites)
 
-- difficultés à comprendre le modèle de données actuel, l'utilisation concrète des tables et des données
-- problèmes d'accès sur les différents outils Oracle homologation, API Basyliq, etc
+- difficultés à planifier du transfert de connaissances, notamment les connaissances fonctionnelles et historiques
+
+- difficultés (sur le Fond De Carte) à trouver une solution propre à la double configuration `application.yaml` et `job.json` nécessaire au scheduler interne Mercury utilisé pour lancer les jobs Spark
+
 - difficultés à créer des requêtes sur un modèle de données et des process que je ne comprend pas entièrement
 
 #### 4 - Ce qui est prévu pour la semaine prochaine
 
-- Discuter du problème de transmission des référentiels avec Jordan (à l'origine des spécifications sur ce sujet) qui était en congés cette semaine.
-- potentiellement commencer un jet d'implémentation sur cette API pour mieux visualiser la faisabilité
+- après ces meetings, Jordan devrait avoir terminé des documentations fonctionnelles sur le transfert des référentiels et je pourrais donc développer en conséquence sur l'API
+
+- par la suite, en attendant les validations diverses, je pourrais adapter le Fond De Carte à ces changements 
