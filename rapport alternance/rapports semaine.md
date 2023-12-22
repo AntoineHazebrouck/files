@@ -152,3 +152,44 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 - après ces meetings, Jordan devrait avoir terminé des documentations fonctionnelles sur le transfert des référentiels et je pourrais donc développer en conséquence sur l'API
 
 - par la suite, en attendant les validations diverses, je pourrais adapter le Fond De Carte à ces changements 
+
+
+
+## Lundi 11/12/2023 -> Vendredi  15/12/2023
+
+#### 1 - Ce que j'ai fait :
+
+- refactoring dans le Fond De Carte, évaluation des potentielles améliorations dans le code 
+
+- préparation d'une spec template à remplir pour les référentiels afin de faire gagner du temps à Jordan
+
+- préparation des requêtes de récupération des référentiels
+
+- préparation du PI, réunion agile trimestrielle avec toute la liquidité permettant de définir les besoins/dépendances inter-équipes sur le prochain trimestre
+
+#### 2 - Ce que j'ai appris :
+
+- visualiser le fonctionnement de base du système legacy, comprendre les choix historiques
+- manipuler les grands concepts appliqués dans le Fond De Carte
+- comprendre les besoins concurrents dans l'enjambement du legacy au lake
+- visualiser la manière d'intégrer des changements dans la base legacy (livraison d'un script à la fin du mois)
+
+#### 3 - Ce que j'ai ressenti (problèmes rencontrés et réussites)
+
+- difficultés à comprendre les grands enjeux du PI
+
+- difficultés à estimer mes taches, les placer dans le temps, notamment avec le changement de semaine
+
+- difficultés (sur le Fond De Carte) à trouver une solution propre à la double configuration `application.yaml` et `job.json` nécessaire au scheduler interne Mercury utilisé pour lancer les jobs Spark
+
+#### 4 - Ce qui est prévu pour la semaine prochaine
+
+- début de l'implémentation du système de référentiels dans l'API:
+	- insertion des requêtes en tables d'accès aux référentiels, cela permet de suivre un système déjà mis en place et aussi un enjambement avec les systèmes Informatica/Java
+	- implémentation du code dans l'API Basyliq
+	- tests
+
+- pour la suite il faudra intégrer ces changements dans le Fond De Carte ce qui engendrera quelques modifications à faire (déjà en cours):
+	- modifier l'implémentation du pattern repository -> passer d'une lecture Spark vers un appel d'API
+	- réintégrer les DQ Controls (Data Quality) probablement dans le Fond De Carte même
+	- réaliser des tests BDD (Cucumber, living doc) sur ces DQ Controls afin de faciliter la vie de Business Analyst
