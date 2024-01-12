@@ -176,7 +176,7 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 
 #### 3 - Ce que j'ai ressenti (problèmes rencontrés et réussites)
 
-- difficultés à comprendre les grands enjeux du PI
+- difficultés à comprendre les grands enjeux du PI hors de mon équipe
 
 - difficultés à estimer mes taches, les placer dans le temps, notamment avec le changement de semaine
 
@@ -192,4 +192,36 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 - pour la suite il faudra intégrer ces changements dans le Fond De Carte ce qui engendrera quelques modifications à faire (déjà en cours):
 	- modifier l'implémentation du pattern repository -> passer d'une lecture Spark vers un appel d'API
 	- réintégrer les DQ Controls (Data Quality) probablement dans le Fond De Carte même
-	- réaliser des tests BDD (Cucumber, living doc) sur ces DQ Controls afin de faciliter la vie de Business Analyst
+	- réaliser des tests BDD (Cucumber, living doc) sur ces DQ Controls afin de faciliter la vie des Business Analyst
+
+
+## Mardi 02/01/2024 -> Vendredi  05/01/2024
+
+#### 1 - Ce que j'ai fait :
+
+- implémentation des endpoints de référentiels sur lesquels Jordan avait suffisamment de visibilité, le Fond De Carte est le premier traitement Basyliq à passer sur le lake : le transfert de connaissances est loin d'être total et beaucoup de code du fond de carte est écrit par d'anciens dev Informatica, il est donc difficile et chronophage de le refactor
+
+- étant donné que tout les endpoints de référentiels ne sont pas implémentés, il faut donc récupérer les référentiels depuis le Fond De Carte de trois manières différentes :
+	- si référentiel privé -> API Mars
+	- si référentiel global implémenté -> API Basyliq
+	- si référentiel global non-implémenté -> probablement lecture Spark d'un fichier déposé à la main (Je n'ai pas encore consulté Pascal car il est en congés)
+
+- je n'ai encore rien livré, ni ouvert aucune PR, j'attends confirmation technique de Pascal et fonctionnelle de Jordan avant d'impliquer d'autres acteurs dans le sujet
+
+#### 2 - Ce que j'ai appris :
+
+- comprendre la facilité du stockage de requêtes SQL "templates" en base plutôt que dans le code d'un point de vue sécurité, on passe par l'ORM qui fait beaucoup de chose à notre place
+- comprendre les besoins concurrents dans l'enjambement du legacy au lake
+- visualiser la manière d'intégrer des changements dans la base legacy (livraison d'un script à la fin du mois)
+
+#### 3 - Ce que j'ai ressenti (problèmes rencontrés et réussites)
+
+- difficultés à prévoir des dates clefs, comme les livraison etc du fait de mon absences, celle de Jordan (Manager) ou celle de Pascal (Tech Lead/MA)
+- difficultés (sur le Fond De Carte) à trouver une solution propre à la double configuration `application.yaml` et `job.json` nécessaire au scheduler interne Mercury utilisé pour lancer les jobs Spark
+
+#### 4 - Ce qui est prévu pour la semaine prochaine
+
+- vérification du script auprès de Renuka (dev legacy), livraison en homol puis prod (les bases de dev sont en libre accès lecture/écriture)
+- vérification de mes endpoints sur l'API, passage de la PR, livraison (le script SQL de la base Oracle doit être livré en amont)
+- discussion avec Pascal des améliorations "transverses" que j'ai apporté au code du Fond De Carte, que garde t'on ? Que jette-t-on ? ...
+- discussion avec Pascal concernant le contrôle qualité des données, ce contrôle était précédemment effectué dans un module externe (BBC_Referentials) qui s'occupait simplement de contrôler, puis d'envoyer les référentiels sur le lake. On passe de "tout en lecture Spark" à "tout en API"
