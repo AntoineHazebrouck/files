@@ -165,7 +165,7 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 
 - préparation des requêtes de récupération des référentiels
 
-- préparation du PI, réunion agile trimestrielle avec toute la liquidité permettant de définir les besoins/dépendances inter-équipes sur le prochain trimestre
+- préparation du PI Planning (Program Increment, https://lucidspark.com/fr/blog/pi-planning), réunion agile trimestrielle avec toute la liquidité permettant de définir les besoins/dépendances inter-équipes sur le prochain trimestre
 
 #### 2 - Ce que j'ai appris :
 
@@ -192,7 +192,7 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 - pour la suite il faudra intégrer ces changements dans le Fond De Carte ce qui engendrera quelques modifications à faire (déjà en cours):
 	- modifier l'implémentation du pattern repository -> passer d'une lecture Spark vers un appel d'API
 	- réintégrer les DQ Controls (Data Quality) probablement dans le Fond De Carte même
-	- réaliser des tests BDD (Cucumber, living doc) sur ces DQ Controls afin de faciliter la vie des Business Analyst
+	- réaliser des tests Behavior-Driven-Development (Cucumber, living doc) sur ces Data Quality Controls afin de faciliter la vie des Business Analyst
 
 
 ## Mardi 02/01/2024 -> Vendredi  05/01/2024
@@ -206,11 +206,11 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 	- si référentiel global implémenté -> API Basyliq
 	- si référentiel global non-implémenté -> probablement lecture Spark d'un fichier déposé à la main (Je n'ai pas encore consulté Pascal car il est en congés)
 
-- je n'ai encore rien livré, ni ouvert aucune PR, j'attends confirmation technique de Pascal et fonctionnelle de Jordan avant d'impliquer d'autres acteurs dans le sujet
+- je n'ai encore rien livré, ni ouvert aucune Pull Request, j'attends confirmation technique de Pascal et fonctionnelle de Jordan avant d'impliquer d'autres acteurs dans le sujet
 
 #### 2 - Ce que j'ai appris :
 
-- comprendre la facilité du stockage de requêtes SQL "templates" en base plutôt que dans le code d'un point de vue sécurité, on passe par l'ORM qui fait beaucoup de chose à notre place
+- comprendre la facilité du stockage de requêtes SQL "templates" en base plutôt que dans le code d'un point de vue sécurité, on passe par l'ORM (Object-Relational Mapping) qui fait beaucoup de chose à notre place
 - comprendre les besoins concurrents dans l'enjambement du legacy au lake
 - visualiser la manière d'intégrer des changements dans la base legacy (livraison d'un script à la fin du mois)
 
@@ -222,6 +222,6 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 #### 4 - Ce qui est prévu pour la semaine prochaine
 
 - vérification du script auprès de Renuka (dev legacy), livraison en homol puis prod (les bases de dev sont en libre accès lecture/écriture)
-- vérification de mes endpoints sur l'API, passage de la PR, livraison (le script SQL de la base Oracle doit être livré en amont)
+- vérification de mes endpoints sur l'API, passage de la Pull Request, livraison (le script SQL de la base Oracle doit être livré en amont)
 - discussion avec Pascal des améliorations "transverses" que j'ai apporté au code du Fond De Carte, que garde t'on ? Que jette-t-on ? ...
 - discussion avec Pascal concernant le contrôle qualité des données, ce contrôle était précédemment effectué dans un module externe (BBC_Referentials) qui s'occupait simplement de contrôler, puis d'envoyer les référentiels sur le lake. On passe de "tout en lecture Spark" à "tout en API"
