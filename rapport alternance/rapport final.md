@@ -103,6 +103,25 @@ Nous verrons plus de détails sur l'organisation en nous concentrant sur le proj
 
 ## Présenter l'écosystème Hadoop
 
+### Son histoire
+
+Les entreprises, y compris SG, ont toujours un besoin de traiter, d'utiliser et d'analyser les/leurs données. Ce utilisations émergent peuvent émerger d'un besoin concurrentiel: limiter les coûts et améliorer le rendement, ou de besoins légaux. Les deux cas nous concernent dans le domaine de la liquidité. 
+
+Historiquement, le moyen de palier à ces demandes est de centraliser le stockage et le traitement de ces données dans une grande base relationnelle. Au fur et à mesure que les volumes des données grimpent, il faut améliorer la machine hôte: on parle de scaling vertical.
+Les entreprises faisaient généralement appel à des solutions spécialisées externes, qui permettent des répondre au besoin. La solution choisie par Société Générale est Oracle Exadata, c'est une solution deux en un qui gère à la fois la partie logicielle et matérielle.
+
+Cependant, cette approche à la manipulation des données volumineuses apporte beaucoup de contraintes.
+
+Premièrement, ces systèmes tout en uns sont très couteux. Il nécessitent l'intervention d'acteurs tiers comme Oracle non open-sources et qui laissent difficilement de la place à l'évolution.
+Aussi, la contrainte la plus évidente pour ces systèmes est la volumétrie. A titre d'exemple, PostgreSQL gère jusque 32To, on imagine donc que même les meilleurs systèmes relationnels verticaux ne multiplieront pas la charge indéfiniment comme le feraient des solutions distribuées.
+Un autre désavantage de ces systèmes monolithiques est le manque de flexibilité, notamment par rapport à Hadoop. La ou certains systèmes relationnels sont capables de manipuler des données destructurées, structurées et semi-structurées, Hadoop peut explicitement stocker tout ces types de données sans contraintes et en volumétries massives. On combine donc les avantages des "meilleures" bases relationnelles et la scalabilité des non-relationnelles.
+
+- difficiles à maintenir
+	- tout est tables
+	- progiciel Informatica
+	- trouver du staff pour maintenir
+- manque de flexibilité par rapport à Hadoop
+
 - l'histoire
 - stockage
 - traitement
