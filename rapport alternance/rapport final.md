@@ -17,9 +17,9 @@ Je tiens tout d'abord à remercier l'équipe pédagogique de l'IUT de Villeneuve
 
 Je pense aussi à Thibaud Levasseur et Tigran Slama, à l'origine de mes débuts chez Société Générale.
 
-Je souhaiterais remercier particulièrement Pascal Rat et Jordan Martin qui m'ont activement suivi lors de mon année dans l'entreprise. Ils m'ont épaulé au cours de mon apprentissage, ils m'ont transmis leur expertise sur de nombreux sujets et apportés leur expérience au sein de l'entreprise.
+Je souhaiterais remercier particulièrement Pascal Rat et Jordan Martin qui m'ont activement suivi lors de mon année dans l'entreprise. Ils m'ont épaulé au cours de mon apprentissage, ils m'ont transmis leur expertise sur de nombreux sujets et apportés leur expérience au sein de l'entreprise. Merci aussi à toute l'équipe BSDQM et Illiqo pour l'accueil et la collaboration dont ils ont fait preuve.
 
-<!-- Cette période d'alternance m'a permis d'affiner mon projet professionnel et donné la visibilité nécessaire à ma continuation en suite du BUT. -->
+Cette période d'alternance m'a permis d'affiner mon projet professionnel et donné la visibilité nécessaire à ma continuation en suite du BUT. Je suis donc reconnaissant envers tous les acteurs qui m'ont accompagné lors de mon cursus, et qui vont potentiellement m'accompagner par la suite.
 
 # Sommaire
 
@@ -28,7 +28,8 @@ Je souhaiterais remercier particulièrement Pascal Rat et Jordan Martin qui m'on
 - Présentation de l'entreprise
 	- Historique et secteur d'activité
 	- Structure organisationnelle
-- Description des missions et des taches réalisées
+- Introduction à l'écosystème Hadoop
+- Description des missions et des tâches réalisées
 	- Mission 1 : ...
 		- Objectifs de la mission
 		- Taches et responsabilités
@@ -44,6 +45,8 @@ Je souhaiterais remercier particulièrement Pascal Rat et Jordan Martin qui m'on
 		- Solutions proposées
 - Réflexion personnelle sur l'expérience vécue
 	- Acquisitions de compétences et développement personnel
+	- Réussites et échecs
+	- La formation par rapport au poste
 	- Enseignements tirés et perspectives futures
 - Conclusion
 - Annexes
@@ -59,33 +62,84 @@ Actuellement, je travaille dans une autre équipe de la chaine de liquidité nom
 ## Contexte et objectif du rapport
 
 
-Dans ce rapport, nous introduirons rapidement l'entreprise et de ses détails notables, notamment au niveau de son envergure et des contraintes majeures que cela engendre d'un point de vue technique comme organisationnel.
+Dans ce rapport, nous introduirons rapidement l'entreprise et de ses détails notables, notamment au niveau de son envergure et des contraintes majeures que cela engendre d'un point de vue technique comme organisationnel. On pourra également relier ces problèmes à mon expérience dans l'entreprise.
 
 Nous expliquerons globalement le contexte de mon alternance au sein du service liquidité chez Société Générale. Nous verrons l'origine historique du projet, ses problématiques et son évolution, aussi nous aurons l'occasion de considérer l'organisation structurelle du projet et du flux des données.
 
+Ces enjeux d'entreprise seront aussi l'occasion d'introduire une des solutions techniques qui permettent d'y palier. L'écosystème Hadoop s'est démocratisé en entreprise car il répond à des problèmes de volumétrie, de flexibilité, d'organisation, TODO. Cette technologie constitue le cœur de mon travail en alternance, et n'est que très peu abordée dans la formation. Il est donc intéressant et important d' apprendre les bases de cet écosystème pour comprendre la suite du rapport.
 
+On parlera plus concrètement par la suite de mes missions et de mes tâches réalisées chez Basyliq. Depuis 2008, le début projet, beaucoup de changements opérationnels, technologiques et organisationnels ont pris forme. Nous allons explorer ces changements historiques et notamment le contexte de transition du système legacy vers l'écosystème Hadoop, moins couteux et plus flexible.
 
-On verra donc ...
-	- l'entreprise et le service de liquidité
-	- ce que j'ai fait
-	- ce que j'ai appris
-	- ce que ..
-
-- pourquoi la formation
-- pourquoi l'entreprise
-- relation avec le stage
-- préciser la suite professionnelle et scolaire
+Je ferais par la suite un bilan personnel sur ces tâches, dans lequel je parlerais de mes réussites et mes difficultés. Je mettrais aussi en valeur les avantages de la formation par rapport au poste.
 
 # Présentation de l'entreprise
 
-
 ## Historique et secteur d'activité
 
+Société Générale est une multinationale financière d'origine française. Elle opère principalement en tant que banque de détail, banque d'investissement et gestionnaire d'actifs. Le groupe agit aussi comme assureur et propose des services aux entreprises comme de la gestion de la dette, des solutions de financement ou du conseil. Société Générale est en autre l'entité principale du groupe SG (SocGen à l'international), qui contient notamment :
+- Crédit du Nord
+- ALD Automotive
+- Boursorama
+- Rosbank
+- ...
 
+La banque a été créée en 1864 à Paris par des banquiers ayants pour objectif de financer le développement industriel Français. Au fil des décennies, l'entreprise s'est diversifiée dans ses services, et s'est aussi étendue à l'international.
+
+Société Générale opère à l'international, ce qui amène encore un grand nombre de défis à relever mais aussi de possibilités. Le service liquidité et notamment Basyliq, mon équipe, est situé à Paris La Défense, en collaboration avec un site localisé à Bangalore (Inde). Toute la communication écrite est en anglais, sauf exception.
+
+
+Afin de nous concentrer sur le domaine d'activité que j'exerce en entreprise. Nous allons par la suite introduire le concept de liquidité, ainsi que son histoire
 
 ## Structure organisationnelle
 
-### Illiqo, ce que je faisais
+D'un point de vue global, l'organisation de l'entreprise est assez hiérarchique. A titre d'exemple, il y a une dizaine de "N plus ..." entre moi et M.Slawomir Krupa, directeur général du groupe. Cette hiérarchie est cependant nécessaire considérant la variété des services et projets menés par le groupe.
+
+Le groupe est divisé en entités, comme SG CIB (Société Générale Corporate & Investment Banking) ou SG RB (Société Générale). Ces entités sont définies par leur domaines d'activités ou leur localisations.
+On peut aussi noter la délimitation par départements. Ces départements prennent typiquement la forme suivante: ABC/DEF/GEH/IJK, à titre d'exemple, je suis dans le département TODO/TSR/DEF (/Treasury and Structural Risks/ TODO) et notre projet est chapeauté par /DFIN/ (TODO). 
+
+Nous verrons plus de détails sur l'organisation en nous concentrant sur le projet.
+
+# Présenter les missions et le projet
+
+## Présenter l'écosystème Hadoop
+
+- l'histoire
+- stockage
+- traitement
+
+## Le contexte
+
+### La liquidité et son histoire
+
+- apparition de la liquidité
+	- coté juridique 
+	- SVB, 2008, Lehman Brothers
+
+- les départements
+- les équipes
+
+
+
+- architecture micro services
+- les indiens/l'international 
+- intro aux périmètres
+
+### L'historique du projet
+
+### Pourquoi la migration ?
+
+## L'architecture et l'organisation actuelle du projet
+
+
+- architecture micro services
+- les indiens/l'international 
+- intro aux périmètres
+
+- agile, meetings ...
+
+
+### Illiqo
+
 
 ### Basyliq, ce que je fais
 
@@ -102,27 +156,6 @@ On verra donc ...
 	- info
 - les équipes
 
-# Présenter les missions et le projet
-
-- mon arrivée/mon recrutement
-
-## Présenter l'écosystème Hadoop
-
-- l'histoire
-- stockage
-- traitement
-
-## Le contexte
-
-- la liquidité
-- les départements
-- les équipes
-
-- le projet
-	- son histoire
-	- le legacy
-	- la transformation
-	- le futur
 
 ## Un exemple de but du projet
 
@@ -138,5 +171,8 @@ On verra donc ...
 - dans la formation et dans l'entreprise
 - professionnellement et personnellement
 - représenter mon projet d'avenir 
+
+
+- préciser la suite professionnelle et scolaire
 
 # Annexes
