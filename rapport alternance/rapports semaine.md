@@ -225,3 +225,33 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 - vérification de mes endpoints sur l'API, passage de la Pull Request, livraison (le script SQL de la base Oracle doit être livré en amont)
 - discussion avec Pascal des améliorations "transverses" que j'ai apporté au code du Fond De Carte, que garde t'on ? Que jette-t-on ? ...
 - discussion avec Pascal concernant le contrôle qualité des données, ce contrôle était précédemment effectué dans un module externe (BBC_Referentials) qui s'occupait simplement de contrôler, puis d'envoyer les référentiels sur le lake. On passe de "tout en lecture Spark" à "tout en API"
+
+## Mardi 27/02/2023 -> Vendredi 01/03/2023
+
+#### 1 - Ce que j'ai fait :
+
+- implémentation finale des endpoints de référentiels selon la solution legacy (impact purement technique dans l'API), il nous faut livrer le Fond De Carte à la fin du mois donc nous devons continuer sur une solution non-optimale mais rapide. 
+
+- préparation du script sql à livrer avec les endpoints de référentiels, la solution legacy "impose" de préparer les requêtes sql templatées dans une table dédiée. Le code sql n'est donc pas écrit dans l'API, mais dans la table.
+
+- préparations dans le Fond De Carte de la lecture API des référentiels, nous avons globalement plus de visibilité sur le sujet au global. Pour rappel, nous avons 2 types de référentiels :
+	- privés -> API Mars : jeux de données "moins importants" utilisés dans notre équipe/service
+	- globaux -> API Basyliq et Oracle Basyliq : jeux de données partagés dans toute la liquidité voire toute la banque
+Nous avons finalement décidé de tout centraliser sur l'API Basyliq. Basyliq tape donc dans la base Oracle et dans l'API Mars.
+
+#### 2 - Ce que j'ai appris :
+
+- gérer les contraintes de temps
+- comprendre les implémentations historiques, évaluer les besoins de les changer ou de les suivre
+- discuter et se mettre d'accord sur des solutions qui présentent chacune des avantages, en prenant en compte les contraintes de temps
+
+#### 3 - Ce que j'ai ressenti (problèmes rencontrés et réussites)
+
+- temps
+- beaucoup de discutions concernant les différentes implémentations possibles
+- tester mes développements de bout en bout. Nous avons beaucoup d'environnements, principalement 3: dev, homol et prod. Mes développements sur les référentiels nécessitent l'ajout des requêtes templates en base pour récupérer des données. Le problème étant que la seule base ouverte en écriture est celle de dev, mais elle est quasiment à l'abandon et ses données sont incorrectes. 
+
+#### 4 - Ce qui est prévu pour la semaine prochaine
+
+- étant donnée l'urgence de la livraison, Pascal devrait avoir intégré mes développements à l'API
+- si tel est bien le cas, je vais donc relier le job à l'API. Je pourrais si j'ai le temps ajouter un profil permettant tout de même de fonctionner en lecture Spark.
