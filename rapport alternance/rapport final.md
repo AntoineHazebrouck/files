@@ -23,6 +23,7 @@ Cette période d'alternance m'a permis d'affiner mon projet professionnel et don
 
 # Sommaire
 
+- Abstract
 - Introduction
 	- Contexte et objectif du rapport
 - Présentation de l'entreprise
@@ -50,6 +51,10 @@ Cette période d'alternance m'a permis d'affiner mon projet professionnel et don
 	- Enseignements tirés et perspectives futures
 - Conclusion
 - Annexes
+
+# Abstract
+
+TODO
 
 # Introduction
 
@@ -115,11 +120,12 @@ Cependant, cette approche à la manipulation des données volumineuses apporte b
 Premièrement, ces systèmes tout en uns sont très couteux. Il nécessitent l'intervention d'acteurs tiers comme Oracle non open-sources et qui laissent difficilement de la place à l'évolution.
 Aussi, la contrainte la plus évidente pour ces systèmes est la volumétrie. A titre d'exemple, PostgreSQL gère jusque 32To, on imagine donc que même les meilleurs systèmes relationnels verticaux ne multiplieront pas la charge indéfiniment comme le feraient des solutions distribuées.
 Un autre désavantage de ces systèmes monolithiques est le manque de flexibilité, notamment par rapport à Hadoop. La ou certains systèmes relationnels sont capables de manipuler des données destructurées, structurées et semi-structurées, Hadoop peut explicitement stocker tout ces types de données sans contraintes et en volumétries massives. On combine donc les avantages des "meilleures" bases relationnelles et la scalabilité des non-relationnelles.
-
+De plus, ces solutions rendent la maintenance et l'évolution assez difficiles. D'un coté l'architecture par tables traditionnelle donne beaucoup d'avantages, et not
 - difficiles à maintenir
 	- tout est tables
 	- progiciel Informatica
 	- trouver du staff pour maintenir
+	- on perd le pourquoi on a fait quoi dans les traitements, les changements ne sont pas en cascade
 - manque de flexibilité par rapport à Hadoop
 
 - l'histoire
