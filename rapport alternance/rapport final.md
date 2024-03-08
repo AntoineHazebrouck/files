@@ -71,7 +71,7 @@ Dans ce rapport, nous introduirons rapidement l'entreprise et de ses détails no
 
 Nous expliquerons globalement le contexte de mon alternance au sein du service liquidité chez Société Générale. Nous verrons l'origine historique du projet, ses problématiques et son évolution, aussi nous aurons l'occasion de considérer l'organisation structurelle du projet et du flux des données.
 
-Ces enjeux d'entreprise seront aussi l'occasion d'introduire une des solutions techniques qui permettent d'y palier. L'écosystème Hadoop s'est démocratisé en entreprise car il répond à des problèmes de volumétrie, de flexibilité, d'organisation, TODO. Cette technologie constitue le cœur de mon travail en alternance, et n'est que très peu abordée dans la formation. Il est donc intéressant et important d' apprendre les bases de cet écosystème pour comprendre la suite du rapport.
+Ces enjeux d'entreprise seront aussi l'occasion d'introduire une des solutions techniques qui permettent d'y palier. L'écosystème Hadoop s'est démocratisé en entreprise car il répond à des problèmes de volumétrie, de flexibilité et d'organisation. Cette technologie constitue le cœur de mon travail en alternance, et n'est que très peu abordée dans la formation. Il est donc intéressant et important d' apprendre les bases de cet écosystème pour comprendre la suite du rapport.
 
 On parlera plus concrètement par la suite de mes missions et de mes tâches réalisées chez Basyliq. Depuis 2008, le début projet, beaucoup de changements opérationnels, technologiques et organisationnels ont pris forme. Nous allons explorer ces changements historiques et notamment le contexte de transition du système legacy vers l'écosystème Hadoop, moins couteux et plus flexible.
 
