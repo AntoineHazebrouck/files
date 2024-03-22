@@ -237,6 +237,7 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 - préparations dans le Fond De Carte de la lecture API des référentiels, nous avons globalement plus de visibilité sur le sujet au global. Pour rappel, nous avons 2 types de référentiels :
 	- privés -> API Mars : jeux de données "moins importants" utilisés dans notre équipe/service
 	- globaux -> API Basyliq et Oracle Basyliq : jeux de données partagés dans toute la liquidité voire toute la banque
+
 Nous avons finalement décidé de tout centraliser sur l'API Basyliq. Basyliq tape donc dans la base Oracle et dans l'API Mars.
 
 #### 2 - Ce que j'ai appris :
@@ -306,7 +307,9 @@ Nous avons finalement décidé de tout centraliser sur l'API Basyliq. Basyliq ta
 - Modifié l'UI de Mars (distributeur de référentiels privés) pour ajouter nos référentiels en production. Actuellement, l'implémentation de l'api basyliq pour transmettre les référentiels est la suivante:
 	- référentiel global = récupération dans la base Oracle basyliq
 	- référentiel privé = "redirection" vers l'api Mars
+
 Le problème est donc que nos référentiels n'ont encore jamais été utilisés en production car le Fond De Carte n'est pas encore en production, mais que tous les environnements de basyliq pointent vers Mars PROD. Il manque donc dans l'UI, parmi la liste des référentiels disponibles, les nôtres. La Pull Request est donc en attente.
+
 - Commencé à refactor la configuration (Spring) du Fond De Carte afin d'en balayer la complexité.
 - Créé des tests unitaires sur mes développements : partie client web et partie configuration.
 
@@ -315,6 +318,7 @@ Le problème est donc que nos référentiels n'ont encore jamais été utilisés
 - Renouvelé avec Pascal les autorités du client Fond De Carte car :
 	- J'ai fait l'erreur de push le client-secret du fond de carte sur le repo git, il fallait donc le renouveler pas soucis de sécurité. Nous avons des processus de sécurité et ce type d'erreur nous est remonté rapidement par la sécurité.
 	- Nous avions précédemment de nombreuses autorisations différentes alors que nous (développeurs) travaillons tous sur le même projet. Nous avons donc tout réuni en un client.
+
 Le groupe utilise un modèle Auth 2.0 qui gère l'autorisation de tout les membres, entités, applications comme utilisateurs.
 
 #### 2 - Ce que j'ai appris :
@@ -334,4 +338,4 @@ Le groupe utilise un modèle Auth 2.0 qui gère l'autorisation de tout les membr
 
 - lundi et mardi : PI planning
 - tester le développement sur Mars UI ou ajouter des données directement via l'api si la mise en production est trop tardive
-- review les changements de Pascal sur le Fond De Carte et inversement, régler les conflits potentiels
+- review les changements de Pascal sur le Fond De Carte et inversement, régler les conflits git potentiels
