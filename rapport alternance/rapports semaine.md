@@ -226,7 +226,7 @@ Lorsqu'on reçoit des données en entrée, on créé une situation. Le <u>[situa
 - discussion avec Pascal des améliorations "transverses" que j'ai apporté au code du Fond De Carte, que garde t'on ? Que jette-t-on ? ...
 - discussion avec Pascal concernant le contrôle qualité des données, ce contrôle était précédemment effectué dans un module externe (BBC_Referentials) qui s'occupait simplement de contrôler, puis d'envoyer les référentiels sur le lake. On passe de "tout en lecture Spark" à "tout en API"
 
-## Mardi 27/02/2023 -> Vendredi 01/03/2023
+## Mardi 27/02/2024 -> Vendredi 01/03/2024
 
 #### 1 - Ce que j'ai fait :
 
@@ -255,3 +255,83 @@ Nous avons finalement décidé de tout centraliser sur l'API Basyliq. Basyliq ta
 
 - étant donnée l'urgence de la livraison, Pascal devrait avoir intégré mes développements à l'API
 - si tel est bien le cas, je vais donc relier le job à l'API. Je pourrais si j'ai le temps ajouter un profil permettant tout de même de fonctionner en lecture Spark.
+
+
+## Mardi 12/03/2024 -> Vendredi 15/03/2024
+
+#### 1 - Ce que j'ai fait :
+
+- ouvert la Pull Request pour les nouveaux endpoints de référentiels de l'API basyliq
+- effectué les changements demandés par le Tech Lead de chez optiprod (feature team de basyliq qui maintient l'api)
+- implémenté la lecture api et lecture parquet dans le job
+- préparé avec Pascal les grands sujets du prochain PI, le PI planning se déroule du 26 au 27 (PI = trimestre découpé en sprints)
+- les sujets principaux sont notamment liés au premier traitement legacy migré (écritures de conso), supposément à livrer d'ici la fin du mois.
+- ce traitement migré vers Spark est supposé fonctionner, il a été écrit par d'anciens développeurs Informatica maintenant en fin de contrats. Ces développeurs n'avaient pas d'expérience en orienté objet, mais plus en orienté tables. Le traitement est donc codé de manière linéaire sur un fichier Java de 2500 lignes.
+- La priorité pour le prochain PI est donc de réparer ce job et d'assurer sa non régression par rapport au job legacy.
+- Il faudra aussi :
+	- refactor tout le job
+	- le tester en code et en non régression
+	- déterminer les règles du job, leur pourquoi et leur comment avec l'aide de nos business analysts, développeurs Informatica et du métier
+	- créer de la documentation vivante liées à ces règles et traitements via des tests bdd (Cucumber)
+
+#### 2 - Ce que j'ai appris :
+
+- être plus assertif et mieux fédérer afin d'avancer plus rapidement
+- demander autour de moi pour trouver de la documentation historique
+- créer des couches de tests du controller jusqu'à la récupération des données dans l'api avec des mocks
+- différence entre spy et mocks
+- beaucoup de connaissances et de recul sur le contexte global du projet et historique
+
+#### 3 - Ce que j'ai ressenti (problèmes rencontrés et réussites)
+
+- difficulté à avancer vite du fait de la dépendance avec optiprod
+- difficulté à trouver du sens depuis les systèmes historiques legacy sous forme d'acronymes (ex corrPciRglEch), c'est un point bloquant dans le choix des url de l'api, optiprod n'accepte les url illisibles
+- difficultés à trouver de la visibilité par rapport aux sujets et estimation du prochain PI
+
+#### 4 - Ce qui est prévu pour la semaine prochaine
+
+- trouver les documentations nécessaires sur les référentiels afin de leur donner un url compréhensible
+- merger la PR et la PR de configuration associée
+- continuer la préparation du PI planning, creuser un peu les sujets pour mieux les estimer
+- potentiellement entamer le refactoring du job
+
+
+## Lundi 18/03/2024 -> Vendredi 22/03/2024
+
+#### 1 - Ce que j'ai fait :
+
+- Terminé et clôturé le développement sur l'api basyliq
+
+- Ouvert la Pull Request de l'implémentation de la lecture des référentiels sur le fond de carte (coté client qui va requêter l'api) que Pascal va review
+- Modifié l'UI de Mars (distributeur de référentiels privés) pour ajouter nos référentiels en production. Actuellement, l'implémentation de l'api basyliq pour transmettre les référentiels est la suivante:
+	- référentiel global = récupération dans la base Oracle basyliq
+	- référentiel privé = "redirection" vers l'api Mars
+Le problème est donc que nos référentiels n'ont encore jamais été utilisés en production car le Fond De Carte n'est pas encore en production, mais que tous les environnements de basyliq pointent vers Mars PROD. Il manque donc dans l'UI, parmi la liste des référentiels disponibles, les nôtres. La Pull Request est donc en attente.
+- Commencé à refactor la configuration (Spring) du Fond De Carte afin d'en balayer la complexité.
+- Créé des tests unitaires sur mes développements : partie client web et partie configuration.
+
+- Estimé et planifié avec Pascal les gros morceaux du prochain PI. C'est une approche assez complexe car nous n'avons pas encore beaucoup de visibilité sur ces sujets mais c'est demandé par l'organisation.
+
+- Renouvelé avec Pascal les autorités du client Fond De Carte car :
+	- J'ai fait l'erreur de push le client-secret du fond de carte sur le repo git, il fallait donc le renouveler pas soucis de sécurité. Nous avons des processus de sécurité et ce type d'erreur nous est remonté rapidement par la sécurité.
+	- Nous avions précédemment de nombreuses autorisations différentes alors que nous (développeurs) travaillons tous sur le même projet. Nous avons donc tout réuni en un client.
+Le groupe utilise un modèle Auth 2.0 qui gère l'autorisation de tout les membres, entités, applications comme utilisateurs.
+
+#### 2 - Ce que j'ai appris :
+
+- mieux compris le modèle Auth 2.0
+- lire des json et parquets avec Spark
+- déroulement de la préparation des PI (auxquels je n'avais jamais participé car pas à plein temps)
+- découpage des epics (grand sujets) en stories, planification et estimation
+
+#### 3 - Ce que j'ai ressenti (problèmes rencontrés et réussites)
+
+- dépendance inattendue avec l'UI de Mars
+- difficultés à estimer des stories plusieurs semaines à l'avance
+- l'ensemble du travail effectué est assez lent dû aux différentes dépendances et à l'organisation du service mais se goupille tout de même.
+
+#### 4 - Ce qui est prévu pour la semaine prochaine
+
+- lundi et mardi : PI planning
+- tester le développement sur Mars UI ou ajouter des données directement via l'api si la mise en production est trop tardive
+- review les changements de Pascal sur le Fond De Carte et inversement, régler les conflits potentiels
